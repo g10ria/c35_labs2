@@ -1,2 +1,7 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<svelte:head>
+  <title>home</title>
+</svelte:head>
+
+<h1>Gloria</h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor porro quasi quia consequuntur fugiat ab beatae iusto, mollitia aspernatur, rerum hic consequatur fuga, laudantium incidunt unde quae iste laboriosam recusandae!</p>
+<img src="images/spinalcord.jpg" alt="spinal cord"/>
