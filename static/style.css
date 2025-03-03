@@ -51,6 +51,17 @@ body {
     padding: 20px;
 }
 
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+
+}
+  article {
+    margin: 10px;
+    grid-template-rows: subgrid;
+    grid-row: span 3;
+  }
+
 form {
   display: grid;
   grid-template-columns: auto 1fr;
