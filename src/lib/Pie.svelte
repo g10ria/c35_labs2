@@ -30,7 +30,7 @@ let arcs;
 </svg>
 <ul class="legend">
 	{#each data as d, index}
-		<li style="--color: { colors(index) }">
+		<li style="--color: { colors(index) }" class:selected={selectedIndex === index}>
 			<span class="swatch"></span>
 			{d.label} <em>({d.value})</em>
 		</li>
@@ -67,7 +67,7 @@ svg:has(.selected) path:not(.selected) {
 }
 
 ul:has(.selected) li:not(.selected) {
-	color: gray;
+	color: gray !important;
 }
 path {
 	transition: 300ms;

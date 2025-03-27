@@ -4,10 +4,10 @@
   import Project from "$lib/Project.svelte";
   import Pie from '$lib/Pie.svelte';
 
-      let selectedYearIndex = -1;
+  let selectedYearIndex = -1;
 
-    let selectedYear;
-$: selectedYear = selectedYearIndex > -1 ? pieData[selectedYearIndex].label : null;
+  let selectedYear;
+  $: selectedYear = selectedYearIndex > -1 ? pieData[selectedYearIndex].label : null;
 
   let query = "";
   $: filteredProjects = projects.filter(project => {
