@@ -3,6 +3,23 @@
   import Project from "$lib/Project.svelte";
 
   let profileData = fetch("https://api.github.com/users/g10ria");
+
+  import { onMount } from "svelte";
+
+  let githubData = null;
+  let loading = true;
+  let error = null;
+
+  onMount(async () => {
+    try {
+      const response = await fetch("https://api.github.com/users/g10ria");
+      githubData = await response.json();
+    } catch (err) {
+      error = err;
+    }
+    loading = false;
+  });
+
 </script>
 
 <svelte:head>
@@ -13,29 +30,23 @@
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor porro quasi quia consequuntur fugiat ab beatae iusto, mollitia aspernatur, rerum hic consequatur fuga, laudantium incidunt unde quae iste laboriosam recusandae!</p>
 <img src="images/spinalcord.jpg" alt="spinal cord"/>
 
-{#await fetch("https://api.github.com/users/g10ria")}
-  <p>Loading...</p>
-{:then response}
-  {#await response.json()}
-    <p>Decoding...</p>
-  {:then data}
-    <section>
-      <h2>My GitHub Stats</h2>
-      <dl>
-        <dt style="text-decoration: underline overline;">Followers:</dt>
-        <dd>{data.followers}</dd>
-        <dt style="text-decoration: underline overline;">Following:</dt>
-        <dd>{data.following}</dd>
-        <dt style="text-decoration: underline overline;">Public Repositories:</dt>
-        <dd>{data.public_repos}</dd>
-      </dl>
-    </section>
-  {:catch error}
+{#if loading}
+    <p>Loading...</p>
+{:else if error}
     <p class="error">Something went wrong: {error.message}</p>
-  {/await}
-{:catch error}
-  <p class="error">Something went wrong: {error.message}</p>
-{/await}
+{:else}
+    <section>
+        <h2>My GitHub Stats</h2>
+        <dl>
+            <dt>Followers</dt>
+            <dd>{githubData.followers}</dd>
+            <dt>Following</dt>
+            <dd>{githubData.following}</dd>
+            <dt>Public Repositories</dt>
+            <dd>{githubData.public_repos}</dd>
+        </dl>
+    </section>
+{/if}
 
 <h2>projects</h2>
 <div class="projects">
