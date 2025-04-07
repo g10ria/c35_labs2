@@ -20,4 +20,7 @@
     grid-template-rows: subgrid;
     grid-row: span 3;
   }
+  img {
+    max-width: 100%;
+  }
 </style>
