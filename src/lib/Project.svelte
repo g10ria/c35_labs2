@@ -7,6 +7,7 @@
     <img src={data.image} alt="">
     <p>{data.description}</p>
     <div>{data.year}</div>
+    <a href="{data.url}">link</a>
 </article>
 
 <style>
@@ -17,7 +18,7 @@
 }
   article {
     margin: 10px;
-    grid-template-rows: subgrid;
+    grid-template-rows: subgrid;  
     grid-row: span 3;
   }
   img {
